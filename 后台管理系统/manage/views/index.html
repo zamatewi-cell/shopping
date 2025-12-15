@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>瑞星商城管理系统</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../public/css/style.css">
+    <style>
+        /* 调整 iframe 高度 */
+        #contentFrame { width: 100%; height: calc(100vh - 60px); border: none; }
+        .top-bar { height: 60px; background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+    </style>
+</head>
+<body>
+
+<div class="d-flex">
+    <div class="sidebar p-3 d-flex flex-column" style="width: 250px;">
+        <h4 class="text-white text-center mb-4"><i class="fas fa-shopping-bag me-2"></i>瑞星管理</h4>
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+                <a href="welcome.html" target="contentFrame" class="nav-link active" onclick="activeMenu(this)">
+                    <i class="fas fa-home me-2"></i> 仪表盘
+                </a>
+            </li>
+            <li>
+                <a href="type.html" target="contentFrame" class="nav-link" onclick="activeMenu(this)">
+                    <i class="fas fa-tags me-2"></i> 商品分类管理
+                </a>
+            </li>
+            <li>
+                <a href="product.html" target="contentFrame" class="nav-link" onclick="activeMenu(this)">
+                    <i class="fas fa-box-open me-2"></i> 商品列表管理
+                </a>
+            </li>
+        </ul>
+        <hr class="text-white">
+        <div class="dropdown">
+            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown">
+                <img src="https://github.com/mdo.png" width="32" height="32" class="rounded-circle me-2">
+                <strong>管理员</strong>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                <li><a class="dropdown-item" href="#" onclick="logout()">退出登录</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="flex-fill bg-light">
+        <div class="top-bar d-flex align-items-center px-4 justify-content-between">
+            <span class="text-muted" id="currentDate"></span>
+            <button class="btn btn-outline-danger btn-sm" onclick="logout()">退出</button>
+        </div>
+        <iframe src="welcome.html" name="contentFrame" id="contentFrame"></iframe>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // 菜单激活状态切换
+    function activeMenu(el) {
+        document.querySelectorAll('.sidebar .nav-link').forEach(link => link.classList.remove('active'));
+        el.classList.add('active');
+    }
+
+    // 显示日期
+    document.getElementById('currentDate').innerText = new Date().toLocaleDateString();
+
+    function logout() {
+        if(confirm('确定退出吗？')) {
+            localStorage.removeItem('user');
+            location.href = 'login.html';
+        }
+    }
+    
+    // 简单的登录拦截
+    if(!localStorage.getItem('user')) {
+        location.href = 'login.html';
+    }
+</script>
+</body>
+</html>

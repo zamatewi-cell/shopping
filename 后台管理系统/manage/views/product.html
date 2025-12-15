@@ -1,132 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="./css/index.css">
-  <link rel="stylesheet" href="./css/product.css">
-  <link rel="stylesheet" href="./css/type.css">
+    <meta charset="UTF-8">
+    <title>商品管理</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body { padding: 20px; background-color: #f8f9fa; }
+        .product-img { width: 50px; height: 50px; object-fit: cover; border-radius: 5px; }
+        .preview-img { max-width: 100%; height: 150px; object-fit: contain; margin-top: 10px; border: 1px dashed #ccc; display: none; }
+    </style>
 </head>
 <body>
 
-  <div class="box">
-
-    <!-- 侧边栏菜单 -->
-    <div class="aside-menu">
-
-      <!-- 用户信息 -->
-      <div class="user-box">
-        <div class="user-img">
-          <img class="auto-img" id="userimg" src="" alt="">
+<div class="container-fluid"> <div class="card">
+        <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
+            <h5 class="mb-0"><i class="fas fa-box-open me-2"></i>商品管理</h5>
+            <button class="btn btn-light btn-sm" onclick="openProductModal()"><i class="fas fa-plus"></i> 发布商品</button>
         </div>
-        <div id="username" class="user-name"></div>
-      </div>
-
-      <!-- 侧边栏列表 -->
-      <div class="aside-list">
-        <div id="prot" class="aisde-list-item">商品类型</div>
-        <div class="aisde-list-item active">商品管理</div>
-      </div>
-
-    </div>
-
-    <!-- 内容 -->
-    <div class="content-box">
-
-      <!-- 导航 -->
-      <div class="nav-box">
-        <div class="title">商家端商品管理系统</div>
-        <div id="logout" class="logout">退出登录</div>
-      </div>
-
-      <!-- 列表内容 -->
-      <div class="list-content">
-
-        <!-- 内容 -->
-        <div class="conten-box">
-
-          <div class="content-nav">
-            <div class="add-btn">添加商品</div>
-          </div>
-
-          <div class="t-box">
-            
-            <table class="table-box">
-              <thead>
-                <tr>
-                  <th class="index">序号</th>
-                  <th class="pid">商品ID</th>
-                  <th class="pimg">商品图片</th>
-                  <th class="pname">商品名称</th>
-                  <th class="penname">商品英文名称</th>
-                  <th class="ptype">商品类型</th>
-                  <th class="price">商品价格</th>
-                  <th class="pflag">商品标志</th>
-                  <th class="operate">
-                    <div class="op">操作</div>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-
-               
-
-              </tbody>
+        <div class="card-body">
+            <table class="table table-hover align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>图片</th>
+                        <th>名称</th>
+                        <th>价格</th>
+                        <th>库存</th>
+                        <th>类型</th>
+                        <th>描述</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody id="product_body"></tbody>
             </table>
-
-          </div>
-
-          <div class="add-type-box">
-            <div class="add-type">
-              <div>添加商品</div>
-              <div>
-              商品类型:
-              <select id="typeId" class="a typelist">
-                <option value="-1">选择商品类型</option>
-              </select>
-            </div>
-            <div>
-              商品名称：<input class="a" type="text" id="name" placeholder="输入商品名称" autocomplete="off">
-            </div>
-            <div>
-              商品英文名称：<input class="a" type="text" id="enname" placeholder="输入商品英文名称" autocomplete="off">
-            </div>
-            <div>
-              商品价格：<input class="a" type="text" id="price" placeholder="输入商品价格" autocomplete="off">
-            </div>
-            <div>
-              商品描述：<textarea class="a" id="desc" placeholder="输入商品描述" autocomplete="off"></textarea>
-            </div>
-            <div>
-              商品图片：
-              <input id="img" type="file">
-            </div>
-            <div>
-              商品详情图片：
-              <input id="largeImg" type="file">
-            </div>
-
-            <div>
-              商品标志(热销、新品、时令)：
-              <input class="a" type="text" id="flag" placeholder="输入商品标志" autocomplete="off" />
-            </div>
-              <div>
-                <button class="commit">确认</button>
-                <button class="cancel">取消</button>
-              </div>
-            </div>
-          </div>
-
         </div>
-
-      </div>
-
     </div>
+</div>
 
-  </div>
+<div class="modal fade" id="productModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="pModalTitle">发布商品</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="productForm">
+                    <input type="hidden" id="pId">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">商品名称</label>
+                            <input type="text" class="form-control" id="pName" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">所属分类</label>
+                            <select class="form-select" id="pType"></select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">价格 (￥)</label>
+                            <input type="number" class="form-control" id="pPrice" step="0.01">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">库存数量</label>
+                            <input type="number" class="form-control" id="pStock">
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label class="form-label">商品描述</label>
+                            <textarea class="form-control" id="pDesc" rows="2"></textarea>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label class="form-label">商品图片</label>
+                            <input type="file" class="form-control" id="pFile" accept="image/*" onchange="previewImage(this)">
+                            <img id="imgPreview" class="preview-img" src="">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-success" onclick="saveProduct()">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
 
-  <script src="/js/jquery-3.7.1.min.js"></script>
-  <script src="/js/product.js"></script>
+<script src="../public/js/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../public/js/product.js"></script>
 </body>
 </html>
