@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoidTE3NTcwNDkxMjk5MjEiLCJpYXQiOjE3NTcwNDkyODUsImV4cCI6MTc1OTY0MTI4NX0.FSYsvx-4iFjHjv1EVdqIf7ALoWWUY6piAsDfmLXS1Vw"
+
+  <button id="testbtn">测试</button>
+
+  <script src="/js/jquery-3.7.1.min.js"></script>
+  <script>
+    $('#testbtn').click(function () {
+
+      $.ajax({
+        type: 'post',
+        url: 'http://127.0.0.1:7001/removeOrder',
+        data: {
+          oid: 'oid1757085533285',
+          token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoidTE3NTcwNDkxMjk5MjEiLCJpYXQiOjE3NTcwNDkyODUsImV4cCI6MTc1OTY0MTI4NX0.FSYsvx-4iFjHjv1EVdqIf7ALoWWUY6piAsDfmLXS1Vw"
+        },
+        success: function (res) {
+          console.log('res ==> ', res);
+
+          alert(res.msg);
+
+          if (res.code == 700) {
+
+            //如果未登录, 则跳转到登录页面
+            location.href = '/';
+          }
+
+        },
+        fail: function (err) {
+          console.log('err ==> ', err);
+
+        }
+      })
+
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/index.css">
+  <link rel="stylesheet" href="./css/product.css">
+  <link rel="stylesheet" href="./css/type.css">
+</head>
+<body>
+
+  <div class="box">
+
+    <!-- 侧边栏菜单 -->
+    <div class="aside-menu">
+
+      <!-- 用户信息 -->
+      <div class="user-box">
+        <div class="user-img">
+          <img class="auto-img" id="userimg" src="" alt="">
+        </div>
+        <div id="username" class="user-name"></div>
+      </div>
+
+      <!-- 侧边栏列表 -->
+      <div class="aside-list">
+        <div id="prot" class="aisde-list-item">商品类型</div>
+        <div class="aisde-list-item active">商品管理</div>
+      </div>
+
+    </div>
+
+    <!-- 内容 -->
+    <div class="content-box">
+
+      <!-- 导航 -->
+      <div class="nav-box">
+        <div class="title">商家端商品管理系统</div>
+        <div id="logout" class="logout">退出登录</div>
+      </div>
+
+      <!-- 列表内容 -->
+      <div class="list-content">
+
+        <!-- 内容 -->
+        <div class="conten-box">
+
+          <div class="content-nav">
+            <div class="add-btn">添加商品</div>
+          </div>
+
+          <div class="t-box">
+            
+            <table class="table-box">
+              <thead>
+                <tr>
+                  <th class="index">序号</th>
+                  <th class="pid">商品ID</th>
+                  <th class="pimg">商品图片</th>
+                  <th class="pname">商品名称</th>
+                  <th class="penname">商品英文名称</th>
+                  <th class="ptype">商品类型</th>
+                  <th class="price">商品价格</th>
+                  <th class="pflag">商品标志</th>
+                  <th class="operate">
+                    <div class="op">操作</div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+
+               
+
+              </tbody>
+            </table>
+
+          </div>
+
+          <div class="add-type-box">
+            <div class="add-type">
+              <div>添加商品</div>
+              <div>
+              商品类型:
+              <select id="typeId" class="a typelist">
+                <option value="-1">选择商品类型</option>
+              </select>
+            </div>
+            <div>
+              商品名称：<input class="a" type="text" id="name" placeholder="输入商品名称" autocomplete="off">
+            </div>
+            <div>
+              商品英文名称：<input class="a" type="text" id="enname" placeholder="输入商品英文名称" autocomplete="off">
+            </div>
+            <div>
+              商品价格：<input class="a" type="text" id="price" placeholder="输入商品价格" autocomplete="off">
+            </div>
+            <div>
+              商品描述：<textarea class="a" id="desc" placeholder="输入商品描述" autocomplete="off"></textarea>
+            </div>
+            <div>
+              商品图片：
+              <input id="img" type="file">
+            </div>
+            <div>
+              商品详情图片：
+              <input id="largeImg" type="file">
+            </div>
+
+            <div>
+              商品标志(热销、新品、时令)：
+              <input class="a" type="text" id="flag" placeholder="输入商品标志" autocomplete="off" />
+            </div>
+              <div>
+                <button class="commit">确认</button>
+                <button class="cancel">取消</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <script src="/js/jquery-3.7.1.min.js"></script>
+  <script src="/js/product.js"></script>
+</body>
+</html>

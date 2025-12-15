@@ -1,0 +1,133 @@
+/* 商品类型 */
+
+.t-box{
+  background-color: #fff;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.table-box{
+  width: 100%;
+  border: 1px solid #e8e8e8;
+  border-collapse: collapse;
+}
+
+th,td{
+  border: 1px solid #e8e8e8;
+  padding: 0;
+}
+
+th{
+  height: 40px;
+}
+
+.index{
+  width: 60px;
+}
+
+td{
+  text-align: center;
+  height: 40px;
+}
+
+.status{
+  width: 100px;
+}
+
+.typeid{
+  width: 170px;
+}
+
+.typename{
+  width: 320px;
+}
+
+.td-box{
+  display: flex;
+  padding: 0 10px;
+}
+
+.btn{
+  width: 60px;
+  height: 26px;
+  background-color: #ddd;
+  margin: 0 10px;
+  line-height: 26px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.danger{
+  background-color: #e4393c;
+  color: #fff;
+}
+
+.info{
+  background-color: #409EFF;
+  color: #fff;
+}
+
+.warning{
+  background-color: #ebce3d;
+  color: #fff;
+}
+.icon{
+  width: 160px;
+}
+
+.operate{
+  text-align: left;
+}
+
+.op{
+  margin-left: 20px;
+}
+
+.content-nav{
+  height: 50px;
+  background-color: #fff;
+  padding: 10px;
+  display: flex;
+}
+
+.add-btn{
+  height: 46px;
+  background-color: #409EFF;
+  color: #fff;
+  width: 120px;
+  text-align: center;
+  line-height: 46px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-type-box{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: none;
+  
+}
+
+.add-type{
+  width: 600px;
+  height: 400px;
+  background-color: #ddd;
+  margin: 100px auto 0;
+  padding: 10px;
+}
+
+.success{
+  background-color: #27b20e;
+  color: #fff;
+}
+
+.hide{
+  display: none;
+}
+
+

@@ -1,0 +1,48 @@
+.add-btn{
+  height: 46px;
+  background-color: #409EFF;
+  color: #fff;
+  width: 120px;
+  text-align: center;
+  line-height: 46px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.index {
+  width: 40px;
+}
+
+.pid{
+  width: 170px;
+}
+
+.pname {
+  width: 200px;
+}
+
+.penname {
+  width: 240px;
+}
+
+.pprice{
+  width: 60px;
+}
+
+.pimg{
+  width: 100px;
+}
+
+.ptype{
+  width: 120px;
+}
+
+.pflag{
+  width: 100px;
+}
+
+.im{
+  width: 80px;
+  display: block;
+  margin: 0 auto;
+}
